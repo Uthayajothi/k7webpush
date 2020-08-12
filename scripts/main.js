@@ -152,7 +152,7 @@ function updateSubscriptionOnServer(subscription) {
 	  redirect: 'follow'
 	};
 	
-	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f5ef3c47-c3c3-4e5a-bd1d-03ee0ed3b171:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
+	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=a907887a-2f62-4504-a601-1a4e5e204c9e:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
 	  .then(response => response.text())
 	  .then(result => console.log(result))
 	  .catch(error => console.log('error', error));
