@@ -6,6 +6,8 @@ importScripts(
 importScripts(
     "https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js",
 );
+importScripts("https://code.jquery.com/jquery-1.12.4.min.js",);
+importScripts("//app-sn02.marketo.com/js/forms2/js/forms2.min.js");
 
 // Initialize the Firebase app in the service worker by passing in the
 // messagingSenderId.
