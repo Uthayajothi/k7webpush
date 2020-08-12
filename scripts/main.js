@@ -139,19 +139,6 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  
-	  var requestOptions = {
-	  method: 'POST',
-	  redirect: 'follow'
-	};
-
-	fetch("https://552-ezz-853.mktorest.com/identity/oauth/token?grant_type=client_credentials&client_id=78ba623d-4ed0-49c0-b65f-f4ae97156872&client_secret=FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb", requestOptions)
-	  .then(response => response.text())
-	  .then(result => console.log(result))
-	  .catch(error => console.log('error', error));
-	  
-	  var accessToken = 
-	  
-	alert("hi");
 	var tokenData = {
 			"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
 			"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
