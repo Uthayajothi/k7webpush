@@ -138,12 +138,12 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-	alert(subscriptionJson.textContent);
+	alert("hi");
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
-	myHeaders.append("Authorization", "Bearer f5ef3c47-c3c3-4e5a-bd1d-03ee0ed3b171:sn");
+	myHeaders.append("Authorization", "Bearer f204a89f-167f-44c3-ae2d-689527fdc613:sn");
 	
-	var raw = JSON.stringify({"action":"createOrUpdate","input":[{"email":"kavin1@gmail.com","webbrowserID":subscriptionJson.textContent}]});
+	var raw = JSON.stringify({"action":"createOrUpdate","input":[{"email":"kavin4@gmail.com","webbrowserID":subscriptionJson.textContent}]});
 	
 	var requestOptions = {
 	  method: 'POST',
@@ -152,7 +152,7 @@ function updateSubscriptionOnServer(subscription) {
 	  redirect: 'follow'
 	};
 	
-	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f5ef3c47-c3c3-4e5a-bd1d-03ee0ed3b171:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
+	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f204a89f-167f-44c3-ae2d-689527fdc613:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
 	  .then(response => response.text())
 	  .then(result => console.log(result))
 	  .catch(error => console.log('error', error));
