@@ -138,7 +138,7 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-	  
+	  alert(subscriptionJson.textContent);
 	  MktoForms2.loadForm("//app-sn02.marketo.com", "552-EZZ-853","1067");
 		  MktoForms2.whenReady(function(form){
 		  $("#form1067").submit(function(){    
