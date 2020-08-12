@@ -141,46 +141,24 @@ function updateSubscriptionOnServer(subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  //alert(subscriptionJson.textContent);
 	  headers.append('GET', 'POST', 'OPTIONS');
-	  var tokenData = {
-			"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
-			"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
-			"grant_type": "client_credentials"
-			};
+	  var myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+	myHeaders.append("Authorization", "Bearer f204a89f-167f-44c3-ae2d-689527fdc613:sn");
 	
-	var options = { 
-		method: decodeURIComponent('POST'),
-		url: 'https://552-ezz-853.mktorest.com/identity/oauth/token',
-		headers: { 'content-type': 'application/json'},
-		body: JSON.stringify(tokenData) 
+	var raw = JSON.stringify({"action":"createOrUpdate","input":[{"email":"kavin4@gmail.com","webbrowserID":subscriptionJson.textContent}]});
+	
+	var requestOptions = {
+	  method: 'POST',
+	  dataType: 'jsonp',
+	  headers: myHeaders,
+	  body: raw,
+	  redirect: 'follow'
 	};
-
-	request(options, function (error, response, body) {
-		
-		var accessToken = response.access_token;
-		
-		console.log(accessToken);
-		
-		if (accessToken != '' || accessToken != null) {
-			var data = {"action":"createOrUpdate","input":[{"webbrowserID":subscriptionJson.textContent}]};
-			var options = { 
-				method: decodeURIComponent('POST'),
-				url: 'https://552-ezz-853.mktorest.com/rest/v1/leads.json',
-				headers: { 
-					"content-type": "application/json",
-					"Authorization": "Bearer " + accessToken,
-					
-				},
-				body: JSON.stringify(data) 
-			};
-
-			request(options, function (error, response, body) {
-				if (error) throw new Error(error);
-				console.log(body);
-			});
-		} else if (error) throw new Error(error);
-		
-		console.log(body);
-	});
+	
+	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f204a89f-167f-44c3-ae2d-689527fdc613:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
+	  .then(response => response.text())
+	  .then(result => console.log(result))
+	  .catch(error => console.log('error', error));
 	
 	  	  
     subscriptionDetails.classList.remove('is-invisible');
