@@ -140,23 +140,6 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  //alert(subscriptionJson.textContent);
-	  MktoForms2.whenReady(function(form){		
-	  $("#mktoForm_1067").submit(function(){  
-	  //alert("hi");  
-	  	updateSubscriptionOnServer(subscription);
-		alert(subscriptionJson.textContent);
-		var myForm = MktoForms2.allForms()[0];		
-		var webbrowserID=$(subscriptionJson.textContent);
-		
-		myForm.addHiddenFields({
-		"webbrowserID": browser_id
-		});
-		if(browser_id!=""){
-	myForm.submit();	
-		}
-	});
-	});
-	
 	  	  
     subscriptionDetails.classList.remove('is-invisible');
   } else {
