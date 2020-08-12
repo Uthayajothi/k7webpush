@@ -140,8 +140,9 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	
+	  //alert(subscriptionJson.textContent);
 	  alert(subscriptionJson.textContent);
-	   var settings = {
+	 var settings = {
   "url": "https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=a907887a-2f62-4504-a601-1a4e5e204c9e:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht",
   "method": "POST",
   "timeout": 0,
@@ -152,10 +153,9 @@ function updateSubscriptionOnServer(subscription) {
   "data": JSON.stringify({"action":"createOrUpdate","input":[{"email":"uthayajothi.v@verticurl.com","webbrowserID": subscriptionJson.textContent}]}),
 };
 
-$.ajax(settings).done(function (response) {
+jQuery.ajax(settings).done(function (response) {
   console.log(response);
 });
-	  	  
 	  	  
     subscriptionDetails.classList.remove('is-invisible');
   } else {
