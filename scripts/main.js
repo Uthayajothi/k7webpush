@@ -140,7 +140,7 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  //alert(subscriptionJson.textContent);
-	  headers.append('GET', 'POST', 'OPTIONS');
+	 // headers.append('GET', 'POST', 'OPTIONS');
 	  var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 	myHeaders.append("Authorization", "Bearer f204a89f-167f-44c3-ae2d-689527fdc613:sn");
