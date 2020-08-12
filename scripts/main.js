@@ -138,7 +138,7 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-	
+	alert(subscriptionJson.textContent);
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 	myHeaders.append("Authorization", "Bearer f5ef3c47-c3c3-4e5a-bd1d-03ee0ed3b171:sn");
