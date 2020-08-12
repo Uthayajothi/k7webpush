@@ -153,10 +153,10 @@ function updateSubscriptionOnServer(subscription) {
 	  
 	alert("hi");
 	var tokenData = {
-"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
-"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
-"grant_type": "client_credentials"
-};
+			"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
+			"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
+			"grant_type": "client_credentials"
+			};
 	
 	var options = { 
 		method: decodeURIComponent('POST'),
@@ -172,7 +172,7 @@ function updateSubscriptionOnServer(subscription) {
 		console.log(accessToken);
 		
 		if (accessToken != '' || accessToken != null) {
-			var data = {"action":"createOrUpdate","input":[{"webbrowserID":subscriptionJson.textContent}}]};
+			var data = {"action":"createOrUpdate","input":[{"webbrowserID":subscriptionJson.textContent}]};
 			var options = { 
 				method: decodeURIComponent('POST'),
 				url: 'https://552-ezz-853.mktorest.com/rest/v1/leads.json',
