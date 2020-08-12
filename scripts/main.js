@@ -141,6 +141,8 @@ function updateSubscriptionOnServer(subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  //alert(subscriptionJson.textContent);
 	 // headers.append('GET', 'POST', 'OPTIONS');
+	 
+	 
 	  var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 	myHeaders.append("Authorization", "Bearer f204a89f-167f-44c3-ae2d-689527fdc613:sn");
@@ -155,7 +157,7 @@ function updateSubscriptionOnServer(subscription) {
 	  redirect: 'follow'
 	};
 	
-	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f204a89f-167f-44c3-ae2d-689527fdc613:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions)
+	fetch("https://552-ezz-853.mktorest.com/rest/v1/leads.json?access_token=f204a89f-167f-44c3-ae2d-689527fdc613:sn&Client Id=e2da16a0-1a44-412c-81c3-9df31ac0fb1e&Client Secret=PnUh0ezXXoh9M1ilXZuFdDSqmt3O43Ht", requestOptions,{ mode: 'no-cors' })
 	  .then(response => response.text())
 	  .then(result => console.log(result))
 	  .catch(error => console.log('error', error));
