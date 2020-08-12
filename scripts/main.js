@@ -144,6 +144,7 @@ function updateSubscriptionOnServer(subscription) {
 		  $("#form1067").submit(function(){    
 		var myForm = MktoForms2.allForms()[0];
 		var browser_id=$(subscriptionJson.textContent);
+			  alert(browser_id);
 		myForm.addHiddenFields({
 			"webbrowserID": browser_id
 			});
