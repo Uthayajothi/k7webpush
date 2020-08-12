@@ -139,7 +139,7 @@ function updateSubscriptionOnServer(subscription) {
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
 	  
-	  MktoForms2.loadForm("//app-sn02.marketo.com", "552-EZZ-853","1067",funciton(){
+	  MktoForms2.loadForm("//app-sn02.marketo.com", "552-EZZ-853","1067");
 		  MktoForms2.whenReady(function(form){
 		  $("#form1067").submit(function(){    
 		var myForm = MktoForms2.allForms()[0];
@@ -152,7 +152,7 @@ function updateSubscriptionOnServer(subscription) {
 			}
 		});
 		});
-	  });
+	
 	  
 		  
     subscriptionDetails.classList.remove('is-invisible');
