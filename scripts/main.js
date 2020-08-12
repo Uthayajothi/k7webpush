@@ -19,6 +19,7 @@
 
 /* eslint-env browser, es6 */
 
+
 'use strict';
 
 const applicationServerPublicKey = 'BAX0twVAhj6X24wQOtGYToTkiMMWP_R6FpuPdyea22doRDglkcEYOsMGbdusdeA-icv8DjziaJPL-YKTr4MKh40';
@@ -138,29 +139,76 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-	  
-	  MktoForms2.loadForm("//app-sn02.marketo.com", "552-EZZ-853","1067");
-		  MktoForms2.whenReady(function(form){
-		  $("#form1067").submit(function(){    
-		var myForm = MktoForms2.allForms()[0];
-		var browser_id=$(subscriptionJson.textContent);
-			// alert(subscriptionJson.textContent);
-		myForm.addHiddenFields({
-			"webbrowserID": browser_id
-			});
-			if(browser_id!=""){
-		myForm.submit();	
-			}
-		});
-		});
 	
-	  
-		  
+	  //alert(subscriptionJson.textContent);
+	  function datapush(){
+		var tokenData = {
+					"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
+					"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
+					"grant_type": "client_credentials"
+					};
+			
+			var options = { 
+				method: decodeURIComponent('POST'),
+				url: 'https://552-ezz-853.mktorest.com/identity/oauth/token',
+				headers: { 'content-type': 'application/json'},
+				body: JSON.stringify(tokenData) 
+			};
+	
+		 request(options, function (error, response, body) {
+			
+			var accessToken = response.access_token;
+			
+			console.log(accessToken);
+			
+			if (accessToken != '' || accessToken != null) {
+				var data = {"action":"createOrUpdate","input":[{"webbrowserID":subscriptionJson.textContent}]};
+				var options = { 
+					method: decodeURIComponent('POST'),
+					url: 'https://552-ezz-853.mktorest.com/rest/v1/leads.json',
+					headers: { 
+						"content-type": "application/json",
+						"Authorization": "Bearer " + accessToken,
+						
+					},
+					body: JSON.stringify(data) 
+				};
+	
+				request(options, function (error, response, body) {
+					if (error) throw new Error(error);
+					console.log(body);
+				});
+			} else if (error) throw new Error(error);
+			
+			console.log(body);
+		});
+	  }
+	  	  
     subscriptionDetails.classList.remove('is-invisible');
   } else {
     subscriptionDetails.classList.add('is-invisible');
   }
 }
+
+
+/*function mktoform() {	
+alert("test");
+
+MktoForms2.whenReady(function(form){
+	  $("#form1067").submit(function(){    
+	var myForm = MktoForms2.allForms()[0];
+	alert(subscriptionJson.textContent);
+	var webbrowserID=$(subscriptionJson.textContent);
+	myForm.addHiddenFields({
+		"webbrowserID": browser_id
+		});
+		if(browser_id!=""){
+	myForm.submit();	
+		}
+	});
+	});
+}*/
+
 
 function updateBtn() {
   if (Notification.permission === 'denied') {
