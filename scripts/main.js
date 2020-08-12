@@ -139,51 +139,24 @@ function updateSubscriptionOnServer(subscription) {
 
   if (subscription) {
     subscriptionJson.textContent = JSON.stringify(subscription);
-	
 	  //alert(subscriptionJson.textContent);
-	  alert(subscriptionJson.textContent);
-	  function datapush(){		  
-		var tokenData = {
-					"client_id": "78ba623d-4ed0-49c0-b65f-f4ae97156872",
-					"client_secret": "FUPpEe1hwxKJMQwdwixCI5M7QptrHbWb",
-					"grant_type": "client_credentials"
-					};
-			
-			var options = { 
-				method: decodeURIComponent('POST'),
-				url: 'https://552-ezz-853.mktorest.com/identity/oauth/token',
-				headers: { 'content-type': 'application/json'},
-				body: JSON.stringify(tokenData) 
-			};
+	  MktoForms2.whenReady(function(form){		
+	  $("#mktoForm_1067").submit(function(){  
+	  //alert("hi");  
+	  	updateSubscriptionOnServer(subscription);
+		alert(subscriptionJson.textContent);
+		var myForm = MktoForms2.allForms()[0];		
+		var webbrowserID=$(subscriptionJson.textContent);
 		
-		 request(options, function (error, response, body) {
-			
-			var accessToken = response.access_token;
-			
-			console.log(accessToken);
-			
-			if (accessToken != '' || accessToken != null) {
-				var data = {"action":"createOrUpdate","input":[{"webbrowserID":subscriptionJson.textContent}]};
-				var options = { 
-					method: decodeURIComponent('POST'),
-					url: 'https://552-ezz-853.mktorest.com/rest/v1/leads.json',
-					headers: { 
-						"content-type": "application/json",
-						"Authorization": "Bearer " + accessToken,
-						
-					},
-					body: JSON.stringify(data) 
-				};
-	
-				request(options, function (error, response, body) {
-					if (error) throw new Error(error);
-					console.log(body);
-				});
-			} else if (error) throw new Error(error);
-			
-			console.log(body);
+		myForm.addHiddenFields({
+		"webbrowserID": browser_id
 		});
-	  }
+		if(browser_id!=""){
+	myForm.submit();	
+		}
+	});
+	});
+	
 	  	  
     subscriptionDetails.classList.remove('is-invisible');
   } else {
